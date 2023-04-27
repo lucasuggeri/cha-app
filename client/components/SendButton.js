@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Button, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 
 const SendButton = () => {
   return (
@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    borderRadius: 50, // Define a borda do botão como circular
-    backgroundColor: "white", // Define a cor de fundo do botão
-    padding: 10, // Define o preenchimento interno do botão
-    alignItems: "center", // Alinha o conteúdo no centro do botão
+    borderRadius: 50, 
+    backgroundColor: "white",
+    padding: 10, 
+    alignItems: "center", 
     justifyContent: "center",
     width: 60,
     height: 60,

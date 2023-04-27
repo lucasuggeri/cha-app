@@ -1,22 +1,13 @@
-import WebSocket from "ws";
-import { createServer } from "ws";
+import WebSocket from 'ws';
 
-const server = createServer({ port: 8080 });
+const ws = new WebSocket('ws://localhost:3333');
 
-server.on("connection", (socket) => {
-  console.log("Novo cliente conectado.");
+ws.on('error', console.error);
 
-  socket.on("message", (data) => {
-    console.log(`Mensagem recebida: ${data}`);
-
-    // Faça algo com a mensagem recebida aqui
-  });
-
-  socket.on("close", () => {
-    console.log("Cliente desconectado.");
-  });
+ws.on('open', function open() {
+  ws.send('something');
 });
 
-server.on("error", (error) => {
-  console.error(`Erro ao iniciar o servidor WebSocket: ${error.message}`);
+ws.on('message', function message(data) {
+  console.log('received: %s', data);
 });
