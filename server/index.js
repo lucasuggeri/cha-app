@@ -1,13 +1,23 @@
-import WebSocket from 'ws';
+const WebSocket = require('ws');
 
-const ws = new WebSocket('ws://localhost:3333');
+const server = new WebSocket.Server({ port: 8080 });
 
-ws.on('error', console.error);
+server.on('connection', (socket) => {
+  console.log('Cliente conectado!');
 
-ws.on('open', function open() {
-  ws.send('something');
+  socket.on('message', (message) => {
+    console.log(`Mensagem recebida: ${message}`);
+    // Envie de volta a mensagem para todos os clientes conectados
+    server.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(message);
+      }
+    });
+  });
+
+  socket.on('close', () => {
+    console.log('Cliente desconectado!');
+  });
 });
 
-ws.on('message', function message(data) {
-  console.log('received: %s', data);
-});
+

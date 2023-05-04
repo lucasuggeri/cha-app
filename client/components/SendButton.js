@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 
-const SendButton = () => {
+const SendButton = (props) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity title="Enviar" style={styles.button} onPress={() => {}}>
+      <TouchableOpacity title={props.title} style={styles.button} onPress={props.onPress}>
         <Text>Enviar</Text>
       </TouchableOpacity>
     </View>

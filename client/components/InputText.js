@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
-const CustomTextInput = () => {
-  const [text, setText] = useState("");
+const CustomTextInput = (props) => {
 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.textInput}
-        onChangeText={setText}
-        value={text}
-        placeholder="Digite aqui"
+        onChangeText={props.onChangeText}
+        value={props.text}
+        placeholder={props.placeholder}
       />
     </View>
   );
